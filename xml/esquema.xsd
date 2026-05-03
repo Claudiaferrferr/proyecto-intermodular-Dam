@@ -1,1 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+  <!-- Elemento raíz -->
+  <xs:element name="taskboard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="usuarios"  type="tipoUsuarios"/>
+        <xs:element name="tableros"  type="tipoTableros"/>
+      </xs:sequence>
+      <xs:attribute name="version"   type="xs:string"  use="required"/>
+      <xs:attribute name="exportado" type="xs:date"    use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Tipos de usuarios -->
+  <xs:complexType name="tipoUsuarios">
+    <xs:sequence>
+      <xs:element name="usuario" type="tipoUsuario" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoUsuario">
+    <xs:sequence>
+      <xs:element name="nombre">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="2"/>
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="email">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[^@]+@[^@]+\.[^@]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="fecha_alta" type="xs:date"/>
+      <xs:element name="activo"     type="xs:boolean"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
+  </xs:complexType>
+
+  <!-- Tipos de tableros -->
+  <xs:complexType name="tipoTableros">
+    <xs:sequence>
+      <xs:element name="tablero" type="tipoTablero" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoTablero">
+    <xs:sequence>
+      <xs:element name="nombre">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="150"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+      <xs:element name="fecha_creacion" type="xs:date"/>
+      <xs:element name="columnas" type="tipoColumnas"/>
+    </xs:sequence>
+    <xs:attribute name="id"         type="xs:positiveInteger" use="required"/>
+    <xs:attribute name="id_usuario" type="xs:positiveInteger" use="required"/>
+  </xs:complexType>
+
+  <!-- Tipos de columnas -->
+  <xs:complexType name="tipoColumnas">
+    <xs:sequence>
+      <xs:element name="columna" type="tipoColumna" minOccurs="1" maxOccurs="10"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoColumna">
+    <xs:sequence>
+      <xs:element name="nombre">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tareas" type="tipoTareas"/>
+    </xs:sequence>
+    <xs:attribute name="id"       type="xs:positiveInteger" use="required"/>
+    <xs:attribute name="posicion" type="xs:nonNegativeInteger" use="required"/>
+  </xs:complexType>
+
+  <!-- Tipos de tareas -->
+  <xs:complexType name="tipoTareas">
+    <xs:sequence>
+      <xs:element name="tarea" type="tipoTarea" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoTarea">
+    <xs:sequence>
+      <xs:element name="titulo">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+      <xs:element name="prioridad">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="BAJA"/>
+            <xs:enumeration value="MEDIA"/>
+            <xs:enumeration value="ALTA"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="fecha_limite" type="xs:date" minOccurs="0"/>
+      <xs:element name="completada"   type="xs:boolean"/>
+      <xs:element name="etiquetas"    type="tipoEtiquetas"/>
+    </xs:sequence>
+    <xs:attribute name="id"         type="xs:positiveInteger" use="required"/>
+    <xs:attribute name="id_usuario" type="xs:positiveInteger" use="required"/>
+  </xs:complexType>
+
+  <!-- Etiquetas -->
+  <xs:complexType name="tipoEtiquetas">
+    <xs:sequence>
+      <xs:element name="etiqueta" type="xs:string" minOccurs="0" maxOccurs="5"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

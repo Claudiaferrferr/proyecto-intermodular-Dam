@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="esquema.xsd"
+           version="1.0"
+           exportado="2025-04-19">
+
+  <usuarios>
+    <usuario id="1">
+      <nombre>Ana García</nombre>
+      <email>ana@taskboard.com</email>
+      <fecha_alta>2025-03-01</fecha_alta>
+      <activo>true</activo>
+    </usuario>
+    <usuario id="2">
+      <nombre>Luis Martínez</nombre>
+      <email>luis@taskboard.com</email>
+      <fecha_alta>2025-03-02</fecha_alta>
+      <activo>true</activo>
+    </usuario>
+    <usuario id="3">
+      <nombre>Sara López</nombre>
+      <email>sara@taskboard.com</email>
+      <fecha_alta>2025-03-05</fecha_alta>
+      <activo>true</activo>
+    </usuario>
+  </usuarios>
+
+  <tableros>
+    <tablero id="1" id_usuario="1">
+      <nombre>Proyecto Web</nombre>
+      <descripcion>Desarrollo del sitio web corporativo</descripcion>
+      <fecha_creacion>2025-03-10</fecha_creacion>
+      <columnas>
+        <columna id="1" posicion="0">
+          <nombre>Por hacer</nombre>
+          <tareas>
+            <tarea id="1" id_usuario="1">
+              <titulo>Diseñar wireframes</titulo>
+              <descripcion>Mockups de todas las pantallas</descripcion>
+              <prioridad>ALTA</prioridad>
+              <fecha_limite>2025-04-01</fecha_limite>
+              <completada>false</completada>
+              <etiquetas>
+                <etiqueta>Diseño</etiqueta>
+                <etiqueta>Frontend</etiqueta>
+              </etiquetas>
+            </tarea>
+            <tarea id="6" id_usuario="3">
+              <titulo>Redactar documentación</titulo>
+              <descripcion>Manual técnico del proyecto</descripcion>
+              <prioridad>BAJA</prioridad>
+              <fecha_limite>2025-04-20</fecha_limite>
+              <completada>false</completada>
+              <etiquetas/>
+            </tarea>
+          </tareas>
+        </columna>
+        <columna id="2" posicion="1">
+          <nombre>En progreso</nombre>
+          <tareas>
+            <tarea id="2" id_usuario="2">
+              <titulo>Configurar servidor</titulo>
+              <descripcion>Instalar Apache y MySQL en producción</descripcion>
+              <prioridad>ALTA</prioridad>
+              <fecha_limite>2025-03-28</fecha_limite>
+              <completada>false</completada>
+              <etiquetas>
+                <etiqueta>Backend</etiqueta>
+                <etiqueta>Urgente</etiqueta>
+              </etiquetas>
+            </tarea>
+            <tarea id="3" id_usuario="1">
+              <titulo>Crear API REST</titulo>
+              <descripcion>Endpoints de usuarios y productos</descripcion>
+              <prioridad>MEDIA</prioridad>
+              <fecha_limite>2025-04-10</fecha_limite>
+              <completada>false</completada>
+              <etiquetas>
+                <etiqueta>Backend</etiqueta>
+                <etiqueta>Frontend</etiqueta>
+              </etiquetas>
+            </tarea>
+          </tareas>
+        </columna>
+        <columna id="3" posicion="2">
+          <nombre>Revisión</nombre>
+          <tareas>
+            <tarea id="4" id_usuario="3">
+              <titulo>Revisar diseño</titulo>
+              <descripcion>Revisión con el cliente</descripcion>
+              <prioridad>MEDIA</prioridad>
+              <fecha_limite>2025-04-05</fecha_limite>
+              <completada>false</completada>
+              <etiquetas>
+                <etiqueta>Testing</etiqueta>
+                <etiqueta>Diseño</etiqueta>
+              </etiquetas>
+            </tarea>
+          </tareas>
+        </columna>
+        <columna id="4" posicion="3">
+          <nombre>Hecho</nombre>
+          <tareas>
+            <tarea id="5" id_usuario="2">
+              <titulo>Deploy inicial</titulo>
+              <descripcion>Subir versión 0.1 al servidor</descripcion>
+              <prioridad>BAJA</prioridad>
+              <fecha_limite>2025-04-15</fecha_limite>
+              <completada>true</completada>
+              <etiquetas>
+                <etiqueta>Backend</etiqueta>
+              </etiquetas>
+            </tarea>
+          </tareas>
+        </columna>
+      </columnas>
+    </tablero>
+  </tableros>
+
+</taskboard>
